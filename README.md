@@ -1,5 +1,6 @@
 ﻿# Job Application Tracker API
-🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+🚧 Work in Progress 🚧
+
 A RESTful backend application built with **Java and Spring Boot** to manage and track job applications. This project is designed to demonstrate backend development, REST API design, database integration and Java development skills.
 
 ## Technologies
