@@ -1,14 +1,12 @@
 package com.melanie.jobtracker.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 import javax.annotation.processing.Generated;
 
 @Entity
 public class JobApplication {
+
     public JobApplication() {
 
     }
@@ -29,6 +27,7 @@ public class JobApplication {
     private String company;
     private String position;
     private String location;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus status;
     private String notes;
 }

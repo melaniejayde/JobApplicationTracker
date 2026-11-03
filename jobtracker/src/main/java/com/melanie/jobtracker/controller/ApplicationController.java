@@ -3,6 +3,8 @@ package com.melanie.jobtracker.controller;
 import com.melanie.jobtracker.model.JobApplication;
 import com.melanie.jobtracker.service.JobApplicationService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +21,10 @@ public class ApplicationController {
     @GetMapping("/api/applications")
     public List<JobApplication> getApplications() {
         return jobApplicationService.getAllApplications();
+    }
+
+    @PostMapping("/api/applications")
+    public JobApplication createApplication(@RequestBody JobApplication application) {
+        return jobApplicationService.createApplication(application);
     }
 }

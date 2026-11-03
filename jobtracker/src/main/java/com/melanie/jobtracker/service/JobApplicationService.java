@@ -21,4 +21,8 @@ public class JobApplicationService {
         return jobApplicationRepository.findAll();
     }
 
+    public JobApplication createApplication(JobApplication application) {
+        return jobApplicationRepository.save(application);
+    }
+
 }
