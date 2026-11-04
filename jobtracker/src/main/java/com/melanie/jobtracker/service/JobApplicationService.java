@@ -11,7 +11,6 @@ public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
 
-    // Constructor injection
     public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
         this.jobApplicationRepository = jobApplicationRepository;
     }
@@ -21,8 +20,30 @@ public class JobApplicationService {
         return jobApplicationRepository.findAll();
     }
 
+    // Create a new job application
     public JobApplication createApplication(JobApplication application) {
         return jobApplicationRepository.save(application);
     }
 
+    // Update an existing job application
+    public JobApplication updateApplication(Long id, JobApplication updatedApplication) {
+
+        JobApplication existingApplication = jobApplicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Application not found"));
+
+        existingApplication.setCompany(updatedApplication.getCompany());
+        existingApplication.setPosition(updatedApplication.getPosition());
+        existingApplication.setLocation(updatedApplication.getLocation());
+        existingApplication.setStatus(updatedApplication.getStatus());
+        existingApplication.setNotes(updatedApplication.getNotes());
+
+        return jobApplicationRepository.save(existingApplication);
+    }
+
+    public void deleteApplication(Long id) {
+        JobApplication existingApplication = jobApplicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Application not found"));
+
+        jobApplicationRepository.delete(existingApplication);
+    }
 }

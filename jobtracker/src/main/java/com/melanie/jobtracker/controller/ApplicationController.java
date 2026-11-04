@@ -2,10 +2,7 @@ package com.melanie.jobtracker.controller;
 
 import com.melanie.jobtracker.model.JobApplication;
 import com.melanie.jobtracker.service.JobApplicationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,18 @@ public class ApplicationController {
     @PostMapping("/api/applications")
     public JobApplication createApplication(@RequestBody JobApplication application) {
         return jobApplicationService.createApplication(application);
+    }
+
+    @PutMapping("/api/applications/{id}")
+    public JobApplication updateApplication(
+            @PathVariable Long id,
+            @RequestBody JobApplication application) {
+
+        return jobApplicationService.updateApplication(id, application);
+    }
+
+    @DeleteMapping("/api/applications/{id}")
+    public void deleteApplication(@PathVariable Long id) {
+        jobApplicationService.deleteApplication(id);
     }
 }
